@@ -9,12 +9,14 @@ import java.util.Random;
 @RestController
 public class HelloController {
 
-    @GetMapping( "hello")
+    private final Random random = new Random();
+
+    @GetMapping( path = "hello")
     public ResponseEntity<?> hello() {
         return ResponseEntity.ok("""
                 { 
                 "yourLuckyNumberIs": "%d"
                 }
-                """.formatted(new Random(11).nextInt()));
+                """.formatted(random.nextInt(11)));
     }
 }
